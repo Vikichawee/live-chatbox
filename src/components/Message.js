@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { auth, db } from "./Firebase";
+import { auth, db } from "../Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { deleteDoc, doc } from "firebase/firestore";
 import { Button } from "@mui/material";

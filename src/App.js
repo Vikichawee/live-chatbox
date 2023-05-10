@@ -1,15 +1,15 @@
 
 import { auth } from "./Firebase";
-import HomePage from './HomePage';
+import HomePage from './components/HomePage';
 import { Button } from "@mui/material";
-import Documentation from './Documentation.js';
+import Documentation from './components/Documentation.js';
 import { Routes } from 'react-router-dom';
-import SignIn from './SignIn';
+import SignIn from './components/SignIn';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
-import SignOut from "./SignOut";
-import ChatBox from "./ChatBox";
+import SignOut from "./components/SignOut";
+import ChatBox from "./components/ChatBox";
 import './App.css'
 
 function App() {

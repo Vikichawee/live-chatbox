@@ -1,7 +1,7 @@
 import React from "react"
 import { signOut } from "firebase/auth";
 import { Button } from "@mui/material"
-import { auth } from "./Firebase";
+import { auth } from "../Firebase";
 
 
 export default function SignOut(){
