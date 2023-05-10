@@ -12,17 +12,24 @@ import SignOut from "./components/SignOut";
 import ChatBox from "./components/ChatBox";
 import './App.css'
 
+const style = {
+  "background-color": "black"
+}
+
+
 function App() {
 
   const [user] = useAuthState(auth)
   return (
+    
     <>
+    
       {user ? (
         <BrowserRouter>
           <nav>  
-            <Button component={Link} to="/">Home</Button>
-            <Button component={Link} to="/chatbox">Chat</Button>
-            <Button component={Link} to="/doc">Documentation</Button>
+            <Button style={style} name="Home" variant="contained" component={Link} to="/" exact>Home</Button>
+            <Button style={style} name="Chatbox" variant="contained" component={Link} to="/chatbox">Chat</Button>
+            <Button style={style} name="Documentation" variant="contained" component={Link} to="/doc">Documentation</Button>
             <SignOut></SignOut>
           </nav>
 
@@ -37,10 +44,13 @@ function App() {
           <nav>  
             <SignIn ></SignIn>
           </nav>
+          
 
           
         
       )}
+      
+
     </>
   );
 }

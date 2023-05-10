@@ -11,6 +11,8 @@ body {
   max-width: 100vw;
   font-size: 16px;
   font-family: sans-serif;
+  background-color: #375592;
+  
 }
 
 button,
@@ -39,6 +41,7 @@ nav :only-child{
     grid-column: 4;
 }
 
+
 /* chat component */
 .messages-wrapper {
   padding: 30px;
@@ -48,9 +51,10 @@ nav :only-child{
   border-radius: 20px 20px 20px 0;
   padding: 15px;
   background-color: #7cc5d9;
+  border: 1px solid #1c2c4c;
   color: #1c2c4c;
   width: max-content;
-  max-width: calc(100% - 50px);
+  max-width: 400px;
   display: flex;
   align-items: flex-start;
   margin-bottom: 20px;
@@ -87,7 +91,7 @@ nav :only-child{
   bottom: 0px;
   width: 100%;
   padding: 20px 30px;
-  background-color: #4c768d;
+  background-color: #1c2c4c;
   display: flex;
 }
 .send-message > input {

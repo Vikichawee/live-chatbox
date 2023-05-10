@@ -13,7 +13,7 @@ export default function SignIn(){
 
     return(
         <>
-        <Button  variant="contained" onClick={signInGoogle}>Sign In</Button>
+        <Button  variant="contained" onClick={signInGoogle}>Sign In with Google</Button>
         </>
     )
 

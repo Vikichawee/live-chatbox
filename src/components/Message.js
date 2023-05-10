@@ -17,7 +17,8 @@ const Message = ({ message }) => {
   };
 
   
-  const createdAt = message.createdAt.toDate().toLocaleString();
+  const createdAt = message.createdAt ? message.createdAt.toDate().toLocaleString() : null;
+
 
   return (
     <div
