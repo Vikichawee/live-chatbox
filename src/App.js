@@ -11,6 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 import SignOut from "./components/SignOut";
 import ChatBox from "./components/ChatBox";
 import './App.css'
+import { useState } from "react";
 
 const style = {
   "background-color": "black"
@@ -18,26 +19,38 @@ const style = {
 
 
 function App() {
-
+  const [room, setRoom] = useState("");
   const [user] = useAuthState(auth)
+  const [roomEntered, setRoomEntered] = useState(false);
+  
   return (
     
     <>
-    
+
       {user ? (
         <BrowserRouter>
           <nav>  
-            <Button style={style} name="Home" variant="contained" component={Link} to="/" exact>Home</Button>
-            <Button style={style} name="Chatbox" variant="contained" component={Link} to="/chatbox">Chat</Button>
-            <Button style={style} name="Documentation" variant="contained" component={Link} to="/doc">Documentation</Button>
+            <Button style={style} name="Home" variant="contained" component={Link} to="/live-chatbox/home" exact>Home</Button>
+            <Button style={style} name="Chatbox" variant="contained" component={Link} to="/live-chatbox/chatbox">Chat</Button>
+            <Button style={style} name="Documentation" variant="contained" component={Link} to="/live-chatbox/doc">Documentation</Button>
             <SignOut></SignOut>
-          </nav>
-
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/doc" element={<Documentation />} />
-            <Route path="chatbox" element={<ChatBox></ChatBox>}></Route>
-          </Routes>
+          </nav> 
+          <div className="room">
+            {!roomEntered && (
+              <>
+                <label> Type room name: </label>
+                <input onChange={(e) => setRoom(e.target.value)} />
+                <Button component={Link} to="/live-chatbox/chatbox" onClick={() => setRoomEntered(true)}>Enter</Button>
+              </>
+            )}
+          </div>
+          {roomEntered && (
+            <Routes>
+              <Route path="/live-chatbox/home" element={<HomePage />} />
+              <Route path="/live-chatbox/doc" element={<Documentation />} />
+              <Route path="/live-chatbox/chatbox" element={<ChatBox room={room} />} />
+            </Routes>
+          )}
         </BrowserRouter>
       ) : (
         

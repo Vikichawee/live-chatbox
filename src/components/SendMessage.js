@@ -3,11 +3,12 @@ import { auth, db } from "../Firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 
 
-const SendMessage = ({ scroll }) => {
+const SendMessage = ({ room }) => {
   const [message, setMessage] = useState("");
 
   const sendMessage = async (event) => {
     event.preventDefault();
+    console.log(room)
     if (message.trim() === "") {
       alert("Enter valid message");
       return;
@@ -19,6 +20,8 @@ const SendMessage = ({ scroll }) => {
       avatar: photoURL,
       createdAt: serverTimestamp(),
       uid,
+      room
+
     });
     setMessage("");
     
@@ -34,6 +37,7 @@ const SendMessage = ({ scroll }) => {
         id="messageInput"
         name="messageInput"
         type="text"
+        room={room}
         className="form-input__input"
         placeholder="type message..."
         value={message}

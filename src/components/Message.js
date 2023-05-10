@@ -9,6 +9,7 @@ const Message = ({ message }) => {
   const [showDeleteButton, setShowDeleteButton] = useState(false);
 
   const handleDelete = async () => {
+    
     try {
       await deleteDoc(doc(db, "messages", message.id));
     } catch (e) {

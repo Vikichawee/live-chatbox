@@ -4,32 +4,38 @@ import {
   collection,
   orderBy,
   onSnapshot,
+  where
   
 } from "firebase/firestore";
 import { db } from "../Firebase";
 import Message from "./Message";
 import SendMessage from "./SendMessage";
 
-export default function ChatBox  () {
+export default function ChatBox  ({room}) {
   const [messages, setMessages] = useState([]);
   
+  
   useEffect(() => {
-    const q = query(
+    console.log(room)
+    const queryMessages = query(
       collection(db, "messages"),
-      orderBy("createdAt"),
-      
+      where("room", "==", room),
+      orderBy("createdAt")
     );
-    const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
+    
+    const unsuscribe = onSnapshot(queryMessages, (snapshot) => {
       let messages = [];
-      QuerySnapshot.forEach((doc) => {
+      snapshot.forEach((doc) => {
+        console.log(doc.data());
         messages.push({ ...doc.data(), id: doc.id });
       });
+      
       setMessages(messages);
     });
 
-    return () => unsubscribe;
-  }, []);
-
+    return () => unsuscribe();
+  }, [room]);
+  
   return (
     <main className="chat-box">
       <div className="messages-wrapper">
@@ -37,7 +43,8 @@ export default function ChatBox  () {
           <Message key={message.id} message={message} />
         ))}
       </div>
-      <SendMessage />
+      
+      <SendMessage room={room}/>
     </main>
   );
 };
