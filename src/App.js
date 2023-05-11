@@ -1,7 +1,7 @@
 
 import { auth } from "./Firebase";
 import HomePage from './components/HomePage';
-import { Button } from "@mui/material";
+import { Button,TextField } from "@mui/material";
 import Documentation from './components/Documentation.js';
 import { Routes } from 'react-router-dom';
 import SignIn from './components/SignIn';
@@ -12,6 +12,7 @@ import SignOut from "./components/SignOut";
 import ChatBox from "./components/ChatBox";
 import './App.css'
 import { useState } from "react";
+
 
 const style = {
   "background-color": "black"
@@ -38,9 +39,9 @@ function App() {
           <div className="room">
             {!roomEntered && (
               <>
-                <label> Type room name: </label>
-                <input onChange={(e) => setRoom(e.target.value)} />
-                <Button component={Link} to="/live-chatbox/chatbox" onClick={() => setRoomEntered(true)}>Enter</Button>
+                
+                <TextField  label="Room" variant="outlined" placeholder="Type the name of the room" className="inputRoom" onChange={(e) => setRoom(e.target.value)} />
+                <Button style={{ backgroundColor: "#FABADA", color: "black"}} className="buttonInput" component={Link} to="/live-chatbox/chatbox" onClick={() => setRoomEntered(true)}>Enter</Button>
               </>
             )}
           </div>

@@ -41,6 +41,16 @@ nav :only-child{
     grid-column: 4;
 }
 
+.room{
+  display: flex;
+  align-items: center ;
+  justify-content: center;
+  gap: 10px;
+}
+.inputRoom{
+  background-color: white;
+}
+
 
 /* chat component */
 .messages-wrapper {
